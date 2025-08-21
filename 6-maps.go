@@ -53,13 +53,4 @@ func main() {
 		fmt.Println("freshMap is equal == mapFunction")
 	}
 	
-
-
-
-
-
-
-
-
-
 }
