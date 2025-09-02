@@ -11,7 +11,7 @@ func main() {
 	//Set value at an Index
 	a[4] = 200
 	fmt.Println("Set:", a)
-	fmt.Println("Get alue at Index 4:", a[4])
+	fmt.Println("Get value at Index 4:", a[4])
 
 	
 	//Return length of an array using len

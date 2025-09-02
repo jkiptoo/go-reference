@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 //Generics are type parameters
 
 //SlicesIndex takes a slice of any comparable type and an element of that type and returns the index of the first occurence
@@ -42,4 +44,20 @@ func (lst *List[T]) AllElements() []T {
 		elements = append(elements, e.val)
 	}
 	return elements
+}
+
+func main() {
+	//Invoking generic functions using type inference
+	var slice = []string{"foo", "bar", "zoo"}
+	fmt.Println("Index of zoo is:", SlicesIndex(slice, "zoo"))
+
+	//Invoke generic functions and specifying them explicitly
+
+	_ = SlicesIndex[[]string, string](slice, "zoo")
+
+	lst := List[int]{}
+	lst.Push(15)
+	lst.Push(20)
+	lst.Push(25)
+	fmt.Println("Contents of List are:", lst.AllElements())
 }
