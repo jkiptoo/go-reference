@@ -1,6 +1,9 @@
 package main
 
-import "sync"
+import (
+	"fmt"
+	"sync"
+)
 
 //Use mutexes to safely access data over multiple goroutines.
 //Use mutex to manage complex states
@@ -28,7 +31,23 @@ func main() {
 		counters: map[string]int{"Alto": 0, "Beta": 0},
 	}
 
-	//Increment counter in loops
-	var groupWait sync.
+	//Increment counter in loop
+	var groupWait sync.WaitGroup
 
+	increment := func(name string, nameCounter int) {
+		for range nameCounter {
+			c.inc(name)
+		}
+		groupWait.Done()
+	}
+
+	//Concurrently run goroutines together with all of them accessing the same container and two accessing the same counter
+	groupWait.Add(3)
+	go increment("Alto", 12000)
+	go increment("Alto", 12000)
+	go increment("Beta", 12500)
+
+	//Wait for goroutines to complete
+	groupWait.Wait()
+	fmt.Println(c.counters)
 }
