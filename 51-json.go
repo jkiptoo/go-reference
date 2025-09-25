@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"strings"
 )
 
 //Encode and Decode JSON using customs types
@@ -21,6 +22,8 @@ type secondResponse struct {
 
 
 func main() {
+
+	fmt.Println(strings.ToUpper("JSON"))
 	//Encoding basic data types to JSON. 
 	//Use Atomic values to encode to JSON
 
@@ -84,8 +87,8 @@ func main() {
 	fmt.Println(numbers)
 
 	//Use a series of comversions to access nested data
-	strings := data["writings"].([]interface{})
-	stringOne := strings[0].(string)
+	stringSlice := data["writings"].([]interface{})  // Changed from 'strings' to 'stringSlice'
+	stringOne := stringSlice[0].(string)             // Updated reference
 	fmt.Println(stringOne)
 
 	//To add additional type-safety and limit type assertions, decode JSON into custom data types
